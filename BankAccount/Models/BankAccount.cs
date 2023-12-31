@@ -1,6 +1,8 @@
-﻿namespace BankAccountKata.Models
+﻿using BankAccountKata.Interfaces;
+
+namespace BankAccountKata.Models
 {
-    public class BankAccount(decimal initialBalance)
+    public class BankAccount(decimal initialBalance, ITransactionFactory transactionFactory)
     {
         public decimal Balance { get; private set; } = initialBalance;
         public List<IAccountTransaction> Transactions = [];
@@ -11,7 +13,7 @@
         {
             if (amount > 0)
             {
-                IAccountTransaction deposit = new DepositTransaction(DateTime.Now, amount, Balance);
+                var deposit = transactionFactory.CreateDepositTransaction(amount, Balance);
                 Balance = deposit.Execute();
                 Transactions.Add(deposit);
             }
@@ -29,7 +31,7 @@
                     throw new ArgumentException("Withdrawal amount must be positive.");
                 case > 0 when Balance >= amount:
                     {
-                        IAccountTransaction withdraw = new WithdrawTransaction(DateTime.Now, amount, Balance);
+                        var withdraw = transactionFactory.CreateWithdrawTransaction(amount, Balance);
                         Balance = withdraw.Execute();
 
                         Transactions.Add(withdraw);

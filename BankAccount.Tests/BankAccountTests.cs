@@ -1,4 +1,5 @@
 using System.Text;
+using BankAccountKata.Models;
 using FluentAssertions;
 
 namespace BankAccountKata.Tests
@@ -12,7 +13,7 @@ namespace BankAccountKata.Tests
             const decimal initialBalance = 100.0m;
 
             // Act
-            var account = new BankAccountKata.Models.BankAccount(initialBalance);
+            var account = new Models.BankAccount(initialBalance, new TransactionFactory());
 
             // Assert
             account.Balance.Should().Be(initialBalance,
@@ -25,7 +26,7 @@ namespace BankAccountKata.Tests
             // Arrange
             const decimal initialBalance = 100.0m;
             const decimal depositAmount = 50.0m;
-            var account = new BankAccountKata.Models.BankAccount(initialBalance);
+            var account = new Models.BankAccount(initialBalance, new TransactionFactory());
 
             // Act
             account.Deposit(depositAmount);
@@ -41,7 +42,7 @@ namespace BankAccountKata.Tests
             // Arrange
             const decimal initialBalance = 100.0m;
             const decimal withdrawalAmount = 30.0m;
-            var account = new BankAccountKata.Models.BankAccount(initialBalance);
+            var account = new Models.BankAccount(initialBalance, new TransactionFactory());
 
             // Act
             account.Withdraw(withdrawalAmount);
@@ -55,7 +56,7 @@ namespace BankAccountKata.Tests
         public void Deposit_NegativeAmount_ThrowsArgumentException()
         {
             // Arrange
-            var account = new BankAccountKata.Models.BankAccount(100.0m);
+            var account = new Models.BankAccount(100.0m, new TransactionFactory());
             var negativeAmount = -50.0m;
 
             // Act & Assert
@@ -67,7 +68,7 @@ namespace BankAccountKata.Tests
         public void Withdraw_NegativeAmount_ThrowsArgumentException()
         {
             // Arrange
-            var account = new BankAccountKata.Models.BankAccount(100.0m);
+            var account = new Models.BankAccount(100.0m, new TransactionFactory());
             var negativeAmount = -50.0m;
 
             // Act & Assert
@@ -79,7 +80,7 @@ namespace BankAccountKata.Tests
         public void Withdraw_AmountExceedingBalance_ThrowsInvalidOperationException()
         {
             // Arrange
-            var account = new BankAccountKata.Models.BankAccount(100.0m);
+            var account = new Models.BankAccount(100.0m, new TransactionFactory());
             var excessiveAmount = 150.0m;
 
             // Act & Assert
@@ -94,7 +95,7 @@ namespace BankAccountKata.Tests
             const decimal initialBalance = 100.0m;
             const decimal withdrawalAmount1 = 30.0m;
             const decimal withdrawalAmount2 = 10.0m;
-            var account = new BankAccountKata.Models.BankAccount(initialBalance);
+            var account = new Models.BankAccount(initialBalance, new TransactionFactory());
             account.Withdraw(withdrawalAmount1);
             account.Withdraw(withdrawalAmount2);
             var today = DateTime.Now.ToShortDateString();
