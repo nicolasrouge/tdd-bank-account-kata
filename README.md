@@ -1,18 +1,17 @@
-# Banking Kata: Incorporating Design Patterns into TDD Practice.
+# TDD Banking Kata + SOLID + Design Patterns
 
-The simple Kata: https://kata-log.rocks/banking-kata
+The Kata: https://kata-log.rocks/banking-kata
 
 # Completed Work
-## Functionality:
+## Basic functionalities:
 - Basic account operations: deposit, withdrawal, and account statement generation.
 - TDD, developed Unit Tests before implementation and refactoring.
 - Basic error handling.
-## Additional work:
-### SOLID Principles:
+### SOLID Principles followed:
 - Single Responsibility.
 - Open/Closed: Enabled.
 - (to be improved) Liskov Substitution & Interface Segregation.
-### Design Patterns:
+### Design Patterns added:
 - Factory Pattern: Utilized for creating instances of different transaction types.
 - Strategy Pattern: Applied for handling different types of transactions (DepositTransaction, WithdrawTransaction).
 - Dependency Injection.
