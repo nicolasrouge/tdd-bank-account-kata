@@ -3,7 +3,6 @@
 The Kata: https://kata-log.rocks/banking-kata
 
 # Completed Work
-### Basic functionalities:
 - Basic account operations: deposit, withdrawal, and account statement generation.
 - TDD, developed Unit Tests before implementation and refactoring.
 - Basic error handling.
