@@ -1,6 +1,6 @@
 ﻿using BankAccountKata.Interfaces;
 
-namespace BankAccountKata.Models;
+namespace BankAccountKata.Models.Transactions;
 
 public class TransactionFactory : ITransactionFactory
 {
@@ -10,9 +10,9 @@ public class TransactionFactory : ITransactionFactory
         return deposit;
     }
 
-    public IAccountTransaction CreateWithdrawTransaction(decimal amount, decimal balance)
+    public IAccountTransaction CreateWithdrawTransaction(decimal amount, decimal balance, ITransactionFeeStrategy feeStrategy)
     {
-        IAccountTransaction withdraw = new WithdrawTransaction(DateTime.Now, amount, balance);
+        IAccountTransaction withdraw = new WithdrawTransaction(DateTime.Now, amount, balance, feeStrategy);
         return withdraw;
     }
 }

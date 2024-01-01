@@ -1,4 +1,4 @@
-﻿namespace BankAccountKata.Models;
+﻿namespace BankAccountKata.Models.Transactions;
 
 public class DepositTransaction(DateTime actionDate, decimal amount, decimal balance)
     : AccountTransaction(actionDate, amount, balance)

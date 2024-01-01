@@ -1,6 +1,6 @@
 ﻿using BankAccountKata.Interfaces;
 
-namespace BankAccountKata.Models
+namespace BankAccountKata.Models.Transactions
 {
     public abstract class AccountTransaction(DateTime actionDate, decimal amount, decimal balance) : IAccountTransaction
     {

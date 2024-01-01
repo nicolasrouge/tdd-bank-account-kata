@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using BankAccountKata.Interfaces;
 
-namespace BankAccountKata.Models;
+namespace BankAccountKata.Models.Statement;
 
 public class StatementFactory
 {
