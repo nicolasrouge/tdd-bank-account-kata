@@ -17,7 +17,7 @@ The correct level of abstraction needs to be thought through well. Here are othe
 - Mocking or Fakes (for Unit Tests)
 - Tasks / Asynchronous operations
 - Implementing persistence
-- Creating RESTful API endpoints
+- Creating RESTful API endpoints and Services
 - Authentication & Authorization
 - Event-Driven Architecture (integration with other services)
 - Dockerization & Microservices (depends on the context)
@@ -25,3 +25,17 @@ The correct level of abstraction needs to be thought through well. Here are othe
 - Performance Optimization
 - Monitoring & Logging
 - Documentation
+
+## Example of Use of Fees from the Client:
+
+```csharp
+var account = new BankAccount(1000, transactionFactory);
+var fixedFeeStrategy = new FixedFeeStrategy(10); // $10 fixed fee
+var percentageFeeStrategy = new PercentageFeeStrategy(0.02m); // 2% fee
+
+// Use fixed fee strategy
+account.Withdraw(100, fixedFeeStrategy);
+
+// Use percentage fee strategy
+account.Withdraw(200, percentageFeeStrategy);
+```
